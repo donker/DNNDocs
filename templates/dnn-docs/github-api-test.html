@@ -1,0 +1,29 @@
+<script lang="JavaScript">
+    function getContributors(contributor) {
+        fetch('https://api.github.com/repos/DNNCommunity/DNNDocs/stats/contributors', {
+            headers: new Headers({
+                'Accept': 'application/vnd.github.v3+json'
+            })
+        })
+        .then(function(response) {return response.json()})
+        .then(function(data) {
+            console.log(data);
+            var result = data;
+            result.sort(function(a,b) {return b.total - a.total});
+            //console.log(result);
+            for(var i in result) {
+                contributor.push(result[i]);
+                console.log(contributor[i].total);
+                console.log(contributor[i].author.login);
+                console.log(contributor[i].author.avatar_url);
+                if(i == 4) { break; }
+            }
+            return contributor;
+        })
+        .catch(function(error) {return console.error(error)})
+    };
+
+    var contributor = [];
+    getContributors(contributor);
+</script>
+

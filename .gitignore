@@ -3,6 +3,7 @@
 
 # dependencies
 /node_modules
+/templates/dnn-docs/node_modules
 Dnn.Platform/
 
 # testing
